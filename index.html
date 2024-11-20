@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Image Slider</title>
+    <style>
+
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .slider {
+            position: relative;
+            width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            height: 550px;
+            margin-top: 90px;
+            border-radius:15px;
+        }
+
+        .slides {
+            display: flex;
+            scroll-behavior: smooth;
+            overflow-x: hidden  ;
+        }
+
+        .slide {
+            min-width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #prev {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slides" id="slides">
+            <img src="https://images.pexels.com/photos/40803/lion-animal-predator-big-cat-40803.jpeg?auto=compress&cs=tinysrgb&w=600" class="slide" alt="Slide 1">
+            <img src="https://images.pexels.com/photos/1996333/pexels-photo-1996333.jpeg?auto=compress&cs=tinysrgb&w=600" class="slide" alt="Slide 2">
+            <img src="https://images.pexels.com/photos/33537/cat-animal-cat-portrait-mackerel.jpg?auto=compress&cs=tinysrgb&w=600" class="slide" alt="Slide 3">
+           
+        </div>
+        <button id="prev">&#10094;</button>
+        <button id="next">&#10095;</button>
+    </div>
+    <script>
+        // Ensure that the IDs match between the HTML and JavaScript
+        let slides = document.getElementById("slides");
+        let prev = document.getElementById("prev");
+        let next = document.getElementById("next");
+
+        prev.addEventListener('click', () => {
+            slides.scrollLeft -= 800;
+        });
+
+        next.addEventListener('click', () => {
+            slides.scrollLeft += 800;
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                prev.click();
+            } else if (event.key === 'ArrowRight') {
+                next.click();
+            }
+        });
+
+    </script>
+</body>
+</html>
